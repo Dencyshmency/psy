@@ -83,3 +83,35 @@ try {
 			  );
 	});
 } catch {}
+
+const openModal = document.querySelectorAll(".price-button");
+const modalWrapper = document.querySelector(".modal-wrapper");
+
+openModal.forEach((el) => {
+	el.onclick = function () {
+		modalWrapper.classList.add("modal-wrapper-open");
+		document.body.style.overflow = "hidden";
+		document.body.style.paddingRight = "17px";
+	};
+});
+
+try {
+	const closeModal = document.querySelector(".close-modal");
+
+	closeModal.onclick = function () {
+		modalWrapper.classList.remove("modal-wrapper-open");
+		document.body.style.overflow = "auto";
+		document.body.style.paddingRight = "0";
+	};
+
+	document.addEventListener("click", (event) => {
+		if (
+			event.target == modalWrapper &&
+			modalWrapper.classList.contains("modal-wrapper-open")
+		) {
+			modalWrapper.classList.remove("modal-wrapper-open");
+			document.body.style.overflow = "auto";
+			document.body.style.paddingRight = "0";
+		}
+	});
+} catch {}
